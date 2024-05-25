@@ -1,7 +1,11 @@
-import Logos from "../../assets/logo.png"
+// Logo.jsx
+import React from 'react';
+import Logos from '../../assets/logo.png';
+import style from './Logo.module.css';
+
 const Logo = () => {
   return (
-    <div>
+    <div className={style.logo}>
       <img src={Logos} alt="Logo" />
     </div>
   );

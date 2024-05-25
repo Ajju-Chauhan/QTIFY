@@ -1,0 +1,15 @@
+.logo {
+    height: 34px;
+    width : 67px;
+    top :20px;
+    left :32px
+}
+/* Logo.module.css */
+/* .logo {
+    height: 34px;
+    width: 67px;
+    top: 20px;
+    left: 32px;
+    position: relative; /* or position: absolute; */
+
+   
