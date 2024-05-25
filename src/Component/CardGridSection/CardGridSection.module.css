@@ -1,0 +1,6 @@
+.gridcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 45px;
+  column-gap: 45px;
+}

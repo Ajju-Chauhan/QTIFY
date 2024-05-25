@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+
+
+import { useState, useEffect } from 'react';
 import './App.css';
+import Header  from './Component/Header.js';
+import Hero from './Component/Hero.js';
+import CardSection from './Component/CardSection/CardSection.js';
+import AccordionSection from './Component/AcoordionSecion/AcoordionSecion.js';
+import { getTopSongsData, getNewSongsData, getSongsData } from './utils/utils';
 
 function App() {
+  const [topSongsData, setTopSongsData] = useState([]);
+  const [newSongsData, setNewSongsData] = useState([]);
+  const [songsData, setSongsData] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const topSongsData = await getTopSongsData();
+      setTopSongsData(topSongsData);
+
+      const newSongsData = await getNewSongsData();
+      setNewSongsData(newSongsData);
+
+      const songsData = await getSongsData();
+      setSongsData(songsData);
+    })();
+  }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Hero/>
+      <CardSection name="Top Albums" songsData={topSongsData} />
+        <CardSection name="New Albums" songsData={newSongsData} />
+        <CardSection name="Songs" songsData={songsData} showFilters />
+        <AccordionSection />
     </div>
   );
 }
